@@ -1,9 +1,14 @@
 #!/usr/bin/python3
 import random
 number = random.randint(-10000, 10000)
-if number == 00:
-    print("{} is zero".format(number))
-if number > 0:
-    print("{} is positive".format(number))
+lastDigit = abs(number) % 10
+START_TXT = "Last digit of "
+lastTxt = ' and is 0'
 if number < 0:
-    print("{} is negative".format(number))
+    lastDigit = lastDigit * -1
+if (lastDigit < 6) & (lastDigit != 0):
+    lastTxt = " and is less than 6 and not 0"
+elif lastDigit > 5:
+    lastTxt = " and is greater than 5"
+
+print(f"{START_TXT}{number}{lastTxt}")
