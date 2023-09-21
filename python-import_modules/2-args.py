@@ -5,8 +5,15 @@ import sys
 if __name__ == "__main__":
     args = sys.argv[1:]
     num_args = len(args)
+    text_arg = "arguments."
 
-    print(f"{num_args} {'argument' if num_args == 1 else 'arguments'}:")
+    if num_args == 1:
+        text_arg = "argument:"
+
+    elif num_args > 1:
+        text_arg = "arguments:"
+
+    print("{0} {1}".format(num_args, text_arg))
 
     for i, arg in enumerate(args, start=1):
 
