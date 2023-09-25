@@ -10,4 +10,4 @@ def print_matrix_integer(matrix=[[]]):
                     print("{:d}".format(o))
                 u += 1
     else:
-        print ()
+        print()
