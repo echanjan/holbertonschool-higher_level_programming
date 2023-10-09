@@ -31,7 +31,7 @@ class Square:
         Returns:
             __size ** 2 (el cuadrado de __size)
         """
-    return self.__size ** 2
+        return self.__size ** 2
 
     @property
     def size(self):
