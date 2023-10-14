@@ -3,6 +3,7 @@
 Este módulo representa la clase Rectangle
 """
 
+
 class Rectangle:
     """
     Esta clase define un cuadrado
