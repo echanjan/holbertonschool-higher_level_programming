@@ -10,6 +10,7 @@ class Rectangle:
     Attributes:
         numbers_of_instance (int): The number of Rectangle instances.
     """
+
     number_of_instances = 0
 
     def __init__(self, width=0, height=0):
@@ -29,6 +30,7 @@ class Rectangle:
         """
         Get/set the width of the Rectangle.
         """
+
         return self.__height
 
     @height.setter
@@ -44,6 +46,7 @@ class Rectangle:
         """
         Get/set the height of the Rectangle.
         """
+
         return self.__width
 
     @width.setter
