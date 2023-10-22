@@ -27,9 +27,9 @@ class Square(Rectangle):
         Este método cálcula el área de nuestra cuadrado.
 
         Returns:
-            int : size * 2
+            int : size ** 2
         """
-        return self.__size
+        return self.__size ** 2
 
     def __str__(self):
         """
