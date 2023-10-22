@@ -12,6 +12,7 @@ class Rectangle:
     """
 
     number_of_instances = 0
+    print_symbol = "#"
 
     def __init__(self, width=0, height=0):
         """
@@ -79,11 +80,9 @@ class Rectangle:
         """
         if self.__width == 0 or self.__height == 0:
             return ("")
-        else
-            a = self.__height + 1
-            b = self.__width
-            str_repr = ''.join([f"{'#' * b}\n" for i in range(a) if i])
-            return str_repr[:len(str_repr) - 1]
+        else:
+            str_repr = "".join([f"{str(self.print_symbol) * self.__width}\n" for i in range(self.__height) if i])
+        return str_repr[:len(str_repr) - 1]
 
     def __repr__(self):
         """
