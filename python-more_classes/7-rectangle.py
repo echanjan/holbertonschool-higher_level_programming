@@ -6,83 +6,112 @@ Defines a Rectangle Class
 
 class Rectangle:
     """
-    Represent a rectangle
-    Attributes:
-        numbers_of_instance (int): The number of Rectangle instances.
+    Esta clase define un rectángulo
     """
 
     number_of_instances = 0
-    print_symbol = "#"
+    print_symbol = '#'
 
     def __init__(self, width=0, height=0):
         """
-        Initializable a new Rectangle.
-        Args:
-            width (int): The width of the new rectangle.
-            height (int): The height of the new rectangle.
-        """
+        Método constructor, recibe el ancho y alto
 
-        type(self).number_of_instances += 1
+        Args:
+            width (int): Ancho del rectángulo.
+            height (int): Alto del rectángulo
+        """
         self.__height = height
         self.__width = width
 
-    @property
-    def height(self):
-        """
-        Get/set the width of the Rectangle.
-        """
-
-        return self.__height
-
-    @height.setter
-    def height(self, value):
-        if not isinstance(value, int):
-            raise TypeError("height must be an integer")
-        if value < 0:
-            raise ValueError("height must be >= 0")
-        self.__height = value
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
         """
-        Get/set the height of the Rectangle.
-        """
+        Este atributo regresa el ancho del rectángulo
 
+        Returns:
+        int: Retorna el ancho(height)
+        """
         return self.__width
 
     @width.setter
     def width(self, value):
+        """
+        Este atributo configura el ancho del rectángulo.
+
+        Args:
+            value (int): Este valor configura el ancho del rectágulo.
+        """
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
+
         if value < 0:
             raise ValueError("width must be >= 0")
         self.__width = value
 
+    @property
+    def height(self):
+        """
+        Este atributo regresa el alto del rectángulo.
+
+        Returns:
+            int: Retorna el alto(height)
+        """
+        return self.__height
+
+    @height.setter
+    def height(self, value):
+        """
+        Este atributo configura el valor de __height
+
+        Args:
+            value (int): Este valor configura el alto del rectángulo.
+        """
+        if not isinstance(value, int):
+            raise TypeError("height must be an integer")
+
+        if value < 0:
+            raise ValueError("height must be >= 0")
+
+        self.__height = value
+
     def area(self):
         """
-        Return the area of Rectangle.
-        """
+        Este método cálcula el área del rectángulo
 
-        return(self.__width * self.__height)
+        Returns:
+            int: alto * ancho
+        """
+        return self.__height * self.__width
 
     def perimeter(self):
         """
-        Return the perimeter of Rectangle.
-        """
+        Este método cálcula el perímetro del rectángulo.
+        Sí el ancho o alto es 0, se retornará 0
 
-        if self.__width == 0 or self.__height == 0:
-            return (0)
-        return ((self.__width * 2) + (self.__height * 2))
+        Returns:
+            int: alto * 2 + ancho * 2
+        """
+        if self.__height == 0 or self.__width == 0:
+            return 0
+        return self.__height * 2 + self.__width * 2
 
     def __str__(self):
         """
-        Return a string representation of the Rectangle.
+        Este método representa un string de Rectángulo
+
+        Returns:
+            str: Regresa un rectángulo con el #.
         """
-        if self.__width == 0 or self.__height == 0:
-            return ("")
+        if self.__height == 0 or self.__width == 0:
+            return ""
         else:
-            str_repr = "".join([f"{str(self.print_symbol) * self.__width}\n" for i in range(self.__height) if i])
-        return str_repr[:len(str_repr) - 1]
+            a = self.__height + 1
+            b = self.__width
+            str_repr = ''.join(
+                    [f"{str(self.print_symbol) * b}\n" for i in range(a) if i])
+            return str_repr[:len(str_repr) - 1]
 
     def __repr__(self):
         """
@@ -95,7 +124,7 @@ class Rectangle:
 
     def __del__(self):
         """
-        This method prints a message when deleting the Rectangle instance
+        Este método imprime un mensaje al eliminar la instancia de Rectangle
         """
 
         Rectangle.number_of_instances -= 1
