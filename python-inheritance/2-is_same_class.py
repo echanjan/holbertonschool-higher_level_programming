@@ -12,6 +12,7 @@ def is_same_class(obj, a_class):
         obj (objeto): El objeto que se desea validar.
 
     Returns:
-        True (bool): Sí es el mismo tipo de dato de a_class, False caso contrario.
+        True (bool): Sí es el mismo tipo de dato de a_class,
+        False caso contrario.
     """
     return type(obj) == a_class
