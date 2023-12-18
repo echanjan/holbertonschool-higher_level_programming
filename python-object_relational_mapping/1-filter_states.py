@@ -1,55 +1,19 @@
 #!/usr/bin/python3
 """
-Este módulo de prueba sirve para conectar
-con MySQL
+lists all states with a name starting with N (upper N)
+from the database hbtn_0e_0_usa
 """
-
-
 import MySQLdb
-import sys
-
-
-def main():
-    """
-    Esta función hace la consulta de la
-    tabla states en hbtn_0e_0_usa.
-    """
-    user_mysql = sys.argv[1]
-    pass_mysql = sys.argv[2]
-    db_mysql = sys.argv[3]
-    host_mysql = 'localhost'
-    port_mysql = 3306
-
-    cnn = MySQLdb.connect(
-            host=host_mysql,
-            user=user_mysql,
-            password=pass_mysql,
-            port=port_mysql,
-            database=db_mysql
-            )
-
-    sql = """
-            SELECT *
-                FROM states
-                WHERE name
-                LIKE BINARY 'N%'
-                ORDER BY id ASC
-            """
-
-    rs = cnn.cursor()
-    rs.execute(sql)
-    rows = rs.fetchall()
-
-    for row in rows:
-        print(row)
-
-    rs.close()
-    cnn.close()
+from sys import argv
 
 
 if __name__ == "__main__":
-    """
-    Esta validación evita que se ejecute
-    este archivo.
-    """
-    main()
+    db = MySQLdb.connect(host="localhost", port=3306,
+                         user=argv[1], passwd=argv[2], db=argv[3])
+    cur = db.cursor()
+    cur.execute("SELECT * FROM states ORDER BY states.id")
+    rows = cur.fetchall()
+    for row in rows:
+        if row[1][0] == 'N':
+            print(row)
+    cur.close()
