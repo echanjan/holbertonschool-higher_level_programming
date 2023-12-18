@@ -21,20 +21,20 @@ def main():
     port_mysql = 3306
 
     cnn = MySQLdb.connect(
-            host=host_mysql,
-            user=user_mysql,
-            password=pass_mysql,
-            port=port_mysql,
-            database=db_mysql
-            )
+        host=host_mysql,
+        user=user_mysql,
+        password=pass_mysql,
+        port=port_mysql,
+        database=db_mysql
+    )
 
     sql = """
-            SELECT *
-                FROM states
-                WHERE name
-                LIKE BINARY 'N%'
-                ORDER BY id ASC
-            """
+             SELECT *
+               FROM states
+              WHERE name
+        LIKE BINARY 'N%'
+           ORDER BY id ASC
+        """
 
     rs = cnn.cursor()
     rs.execute(sql)
