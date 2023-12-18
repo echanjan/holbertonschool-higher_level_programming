@@ -1,30 +1,41 @@
 #!/usr/bin/python3
-
 """
-    A script that lists all states from the database hbtn_0e_0_usa
-    Username, password and database names are given as user args
+Este módulo de prueba sirve para conectar
+con MySQL
 """
 
 
-import sys
 import MySQLdb
+import sys
 
 
-if __name__ == '__main__':
-    db = MySQLdb.connect(user=sys.argv[1],
-                         passwd=sys.argv[2],
-                         db=sys.argv[3],
-                         host='localhost',
-                         port=3306)
+def main():
+    """
+    Esta función hace la consulta de la
+    tabla states en hbtn_0e_0_usa.
+    """
 
-    cursor = db.cursor()
+    db = MySQLdb.connect(
+        host="localhost",
+        user=sys.argv[1],
+        password=sys.argv[2],
+        port=3306,
+        database=sys.argv[3],
+    )
+    r = db.cursor()
+    r.execute("SELECT * FROM states ORDER BY id ASC")
+    rows = r.fetchall()
 
-    cursor.execute("SELECT * FROM states ORDER BY id ASC")
-
-    data = cursor.fetchall()
-
-    for row in data:
+    for row in rows:
         print(row)
 
-    cursor.close()
+    r.close()
     db.close()
+
+
+if __name__ == "__main__":
+    """
+    Esta validación evita que se ejecute
+    este archivo.
+    """
+    main()
